@@ -1,0 +1,70 @@
+{% extends 'web/layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="todo-content mx-lg-1">
+        <div class="todo-header pb-2 border-bottom border-gray d-flex" style="height: 38px;">
+          <div class="todo-header-item mt-1 text-primary font-weight-bold">
+            TODOs
+          </div>
+          <a href="{% url 'web:create' %}" class="ml-auto">
+            <div class="todo-header-item btn btn-sm border border-info text-primary">
+              Add New
+            </div>
+          </a>
+        </div>
+        {% if todos %}
+          <div class="todo-list">
+            {% for task in todos %}
+              <div id="{{ task.id }}" class="todo-item my-2 py-3 px-2 rounded-lg bg-warning">
+                <div class="todo-item-mid">
+                  <a class="todo-item-link" href="{% url 'web:detail' task.id %}" style="color: black;">
+                    <div class="todo-item-title font-weight-bold">
+                      {{ task.title }}
+                    </div>
+                  </a>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="todo-list-empty-msg text-dark mt-3 mb-4 px-2 font-italic">
+            <span class="font-weight-bold">No Todos !</span> Looks like, you have been enjoying free times...Have fun...
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="finished-content mx-lg-1">
+        <div class="finished-header pb-2 border-bottom border-gray d-flex" style="height: 38px;">
+          <div class="finished-header-item mt-1 text-success font-weight-bold">
+            Finished
+          </div>
+        </div>
+        {% if finished %}
+          <div class="finished-list">
+            {% for task in finished %}
+              <div id="{{ task.id }}" class="finished my-2 py-3 px-2 rounded-lg bg-success">
+                <div class="finished-mid">
+                  <a class="finished-link" href="{% url 'web:detail' task.id %}" style="color: black;">
+                    <div class="finished-title font-weight-bold">
+                      {{ task.title }}
+                    </div>
+                  </a>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="finished-list-empty-msg text-dark mt-3 mb-4 px-2 font-italic">
+            <span class="font-weight-bold">No tasks Finished yet!</span> Don't worry, you'll catch up soon. Stay with us and keep track of your activity...
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

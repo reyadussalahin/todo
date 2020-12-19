@@ -1,0 +1,49 @@
+{% extends 'web/layout.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 mx-auto">
+      <div class="task-utility-wrapper px-md-2">
+        <div class="task-content-utility">
+          <div class="task-content border-bottom border-grey mb-2">
+            <div class="task-top py-2 d-flex align-items-center" style="font-size: 13px;">
+              <div class="task-status-badge ml-auto">
+                <div class="task-status-badge-details border border-{{ task.status_color }} btn-sm btn-{{ task.status_color }} text-white font-weight-bold">
+                  {{ task.status }}
+                </div>
+              </div>
+            </div>
+            <div class="task-body pt-2 pb-3">
+              <div class="task-title font-weight-bold">
+                <!-- This is the title -->
+                {{ task.title }}
+              </div>
+              <div class="task-description mt-2 pb-1-3" style="white-space: pre-wrap;">{{ task.description }}</div>
+            </div>
+          </div>
+          <div class="task-action d-flex">
+            <form action="{% url 'web:delete' task.id %}" method="POST">
+              {% csrf_token %}
+              <input type="submit" name="delete" value="Delete" class="task-delete btn btn-sm border border-info text-primary mr-2">
+            </form>
+            <a href="{% url 'web:update' task.id %}" class="ml-auto">
+              <div class="task-update btn btn-sm border border-info text-primary mr-2">
+                Edit
+              </div>
+            </a>
+            <form action="{% url 'web:update_status' task.id %}" method="POST">
+              {% csrf_token %}
+              <input type="text" name="completed" value="{{ task.mark_as_bool }}" hidden="true">
+              <input type="submit" name="mark_as" value="Mark As {{ task.mark_as }}" id="task-status-update" class="task-finished btn btn-sm border border-info text-primary">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
