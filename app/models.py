@@ -17,6 +17,9 @@ class Todo(models.Model):
         for key, value in data.items():
             if key not in Todo.fields:
                 raise KeyError
+            value = value.strip()
+            if value == "":
+                raise KeyError
             setattr(self, key, value)
 
     @staticmethod
