@@ -12,7 +12,7 @@ The following tasks have been completed so far:
   - Use google firestore as data storage
   - Deploy the app to google App Engine
 
-### Tasks on progress
+### Tasks in progress
   - Simple webapp UI for the app
   - [optional]: Administrating firebase data entities through django admin
 
@@ -111,7 +111,7 @@ PUT /api/v1/todos/sc8CdnZQ5KiAstia029c
 
 #### Partial update(i.e. patch) a todo task
 ```
-PUT /api/v1/todos/sc8CdnZQ5KiAstia029c
+PATCH /api/v1/todos/sc8CdnZQ5KiAstia029c
 {
     "description": "description 7 .......",
 }
