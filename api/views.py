@@ -51,14 +51,14 @@ class TodoViewSet(ViewSet):
                     "status": "error",
                     "message": "Invalid ID"
                 },
-                status=status.HTTP_404_NOT_FOUND
+                status=status.HTTP_400_BAD_REQUEST
             )
         except ValueError:
             return Response({
                     "status": "error",
                     "message": "No task found for provided ID"
                 },
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_404_NOT_FOUND
             )
         return Response({
             "status": "success",
@@ -76,14 +76,14 @@ class TodoViewSet(ViewSet):
                     "status": "error",
                     "message": "Either invalid ID or form fields not formatted properly"
                 },
-                status=status.HTTP_404_NOT_FOUND
+                status=status.HTTP_400_BAD_REQUEST
             )
         except ValueError:
             return Response({
                     "status": "error",
                     "message": "No task found for provided ID"
                 },
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_404_NOT_FOUND
             )
         return Response({
                 "status": "success",
@@ -103,14 +103,14 @@ class TodoViewSet(ViewSet):
                     "status": "error",
                     "message": "Either invalid ID or form fields not formatted properly"
                 },
-                status=status.HTTP_404_NOT_FOUND
+                status=status.HTTP_400_BAD_REQUEST
             )
         except ValueError:
             return Response({
                     "status": "error",
                     "message": "No task found for provided ID"
                 },
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_404_NOT_FOUND
             )
         return Response({
                 "status": "success",
