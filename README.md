@@ -13,9 +13,12 @@ The following tasks have been completed so far:
   - Use google firestore as data storage
   - Deploy the app to google App Engine
 
-### Tasks in progress(Optional)
+### Tasks in progress(Optional) & Solution Idea:
+
+#### Tasks
   - [optional]: Administrating firebase data entities through django admin
 
+#### Solution Idea
 The idea to solve the administration problem is create a new `Manager` for `app.models.Todo` model. As, django-admin relies upon two things to provide a way to adminitrating a db table and these are:
  1. adding model to admin
  2. and the model's underline database `Manager` which return `QuerySet` object which helps to view the data through django-admin interface.
@@ -145,9 +148,6 @@ DELETE /api/v1/todos/tg3FdReE7jI2ZoPd917d
 
 ```
 # HTTP 204 No Content
-{
-    "status": "success"
-}
 ```
 
 
