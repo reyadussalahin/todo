@@ -115,7 +115,7 @@ class Todo(models.Model):
         setfields = self.__dict__.keys()
         if ("id" not in setfields):
             raise KeyError
-        store.collection(Todo.collection_name).document(pk).delete()
+        store.collection(Todo.collection_name).document(self.id).delete()
 
     @staticmethod
     def delete(pk=None):
