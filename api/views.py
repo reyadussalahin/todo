@@ -136,8 +136,6 @@ class TodoViewSet(ViewSet):
                 },
                 status=status.HTTP_400_BAD_REQUEST
             )
-        return Response({
-                "status": "success"
-            },
-            status=status.HTTP_204_NO_CONTENT
-        )
+        except Exception as err:
+            print(f"Unexpected error occured while deleting task with id {pk}, Error: {err}")
+        return Response(status=status.HTTP_204_NO_CONTENT)
