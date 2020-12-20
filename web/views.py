@@ -17,7 +17,7 @@ from django.urls import reverse
 
 def get_api_root(request):
     web_root = request.scheme + "://" + request.get_host()
-    print(f"web root: {web_root}")
+    print(f"web_root: {web_root}")
     api_root = web_root + "/api/v1/todos/"
     print(f"api_root: {api_root}")
     return api_root
