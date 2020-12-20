@@ -83,7 +83,7 @@ class Todo(models.Model):
     def pull():
         setfields = self.__dict__.keys()
         if ("id" not in setfields):
-            return KeyError
+            raise KeyError
         if ("title" in setfields) and ("description" in setfields) and ("completed" in setfields):
             return Todo(self.to_dict())
         ret = Todo.retrieve(self.id)
