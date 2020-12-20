@@ -20,6 +20,8 @@ class Todo(models.Model):
             value = value.strip()
             if value == "":
                 raise KeyError
+            if key == "completed" and value not in ["true", "True", True, "false", "False", False]:
+                raise KeyError
             setattr(self, key, value)
 
     @staticmethod
