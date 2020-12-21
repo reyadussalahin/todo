@@ -82,12 +82,12 @@ class Todo(models.Model):
             raise ValueError
         return Todo.doc_to_todo_obj(doc)
 
-    def pull():
+    def pull(self):
         setfields = self.__dict__.keys()
         if ("id" not in setfields):
             raise KeyError
         if ("title" in setfields) and ("description" in setfields) and ("completed" in setfields):
-            return Todo(self.to_dict())
+            return self
         ret = Todo.retrieve(self.id)
         for key, value in ret.__dict__.items():
             setattr(self, key, value)
